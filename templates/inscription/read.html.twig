@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Utilisateurs{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>Liste des utilisateurs</h4>
+                    <a href="{{ path('inscription.add') }}" class="btn btn-success">Nouveau utilisateur</a>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Prenom</th>
+                                <th>Nom</th>
+                                <th>Profile</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                               
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for utilisateur in utilisateurs %}
+                            <tr>
+                                 <td>{{ utilisateur.id }}</td>
+                                <td>{{ utilisateur.prenom }}</td>
+                                <td>{{utilisateur.nom }}</td>
+                                <td>{{ utilisateur.profile }}</td>
+                                <td>{{ utilisateur.email }}</td>
+                                <td>{{utilisateur.password}}</td>
+                                
+                                <td>
+                                    <a href="{{ path('inscription.edit', {'id': utilisateur.id}) }}" class="btn btn-primary">Modifier</a>
+                                    <a href="{{ path('inscription.delete', {'id': utilisateur.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce patient ?')">Supprimer</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

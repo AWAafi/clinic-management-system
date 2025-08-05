@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Rendezvous{% endblock %}
+
+{% block body %}
+
+ 
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>Modifier un Rendezvous</h4>
+                    <a href="{{ path('rendezvous.read') }}" class="btn btn-success">Liste des Rendezvous</a>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+
+                    <div class="class mb-3">
+                        {{ form_row(form.date, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="class mb-3">
+                        {{ form_row(form.heure, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    
+                    <div class="class mb-3">
+                        {{ form_row(form.motif, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    
+
+                   <div class="class mb-3">
+                      {{ form_row(form.enregistrer, {'label': 'Modifier', 'attr': {'class': 'btn btn-primary'}}) }}
+                   </div>
+
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Medecins {% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>Liste des Medecins</h4>
+                    <a href="{{ path('medecin.add') }}" class="btn btn-success">Nouveau medecin</a>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                 <th>ID</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Specialite</th>
+                                <th>Téléphone</th>
+                                <th>Email</th>
+                               
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for medecin in medecins %}
+                            <tr>
+                                <td>{{ medecin.id }}</td>
+                                <td>{{ medecin.nom }}</td>
+                                <td>{{medecin.prenom }}</td>
+                                <td>{{ medecin.specialite }}</td>
+                                <td>{{ medecin.tel }}</td>
+                                <td>{{medecin.email }}</td>
+                                
+                                <td>
+                                    <a href="{{ path('medecin.edit', {'id': medecin.id}) }}" class="btn btn-primary">Modifier</a>
+                                    <a href="{{ path('medecin.delete', {'id': medecin.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce patient ?')">Supprimer</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
